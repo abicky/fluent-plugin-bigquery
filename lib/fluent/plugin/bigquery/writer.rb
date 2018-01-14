@@ -88,6 +88,7 @@ module Fluent
       end
 
       def insert_rows(project, dataset, table_id, rows, template_suffix: nil)
+        raise Fluent::BigQuery::UnRetryableError.new('Intentional error')
         body = {
           rows: rows,
           skip_invalid_rows: @options[:skip_invalid_rows],
@@ -126,6 +127,7 @@ module Fluent
       end
 
       def create_load_job(chunk_id, project, dataset, table_id, upload_source, fields)
+        raise Fluent::BigQuery::UnRetryableError.new('Intentional error')
         configuration = {
           configuration: {
             load: {
